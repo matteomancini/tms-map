@@ -28,4 +28,4 @@ The development of this code was supported by a Starting Grant awarded in 2022 f
 ## License
 
 This code is licensed under the MIT license, which you can find in
-the `MIT-LICENSE.txt` file.
+the `LICENSE` file.
