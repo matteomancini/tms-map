@@ -55,8 +55,10 @@ def get_scs(ss, dist, axis=0):
 def get_distances(vert, target, vert_mat=None, measure='euclidean'):
     """Compute distances between a given target and all the source locations."""
     distances = np.zeros((len(vert), 1))
-    vert_to_target = np.sqrt(np.sum((vert-target)**2, axis=1))
+    vert_to_target = np.sqrt(np.sum((vert-np.squeeze(target))**2, axis=1))
     if measure == 'euclidean':
+        source = np.argmin(vert_to_target)
+        vert_to_target = np.sqrt(np.sum((vert-vert[source,:])**2, axis=1))
         distances = np.expand_dims(vert_to_target, axis=1)
     elif measure == 'geodesic':
         assert vert_mat is not None, "For geodesic distance, vertices connectivity matrix is needed"
